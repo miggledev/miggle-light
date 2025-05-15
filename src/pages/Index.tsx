@@ -204,9 +204,7 @@ const Index = () => {
                 Notify Me
               </button>
             </div>
-            <p className="text-sm text-center mt-4 text-muted-foreground">
-              We respect your privacy. No spam, ever.
-            </p>
+            <p className="text-sm text-center mt-4 text-muted-foreground">I respect your privacy. No spam, ever.</p>
           </form>
           
           <div className="mt-16 text-center">
