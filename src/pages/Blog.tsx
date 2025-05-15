@@ -2,6 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
+import { Mail, Discord, Send } from 'lucide-react';
 
 const Blog = () => {
   const handleSubscribe = (e: React.FormEvent) => {
@@ -62,6 +63,42 @@ const Blog = () => {
               Subscribe above to be notified when new content is published.
             </p>
             <div className="w-24 h-1 bg-miggle-yellow rounded-full mx-auto"></div>
+          </div>
+        </div>
+      </section>
+      
+      {/* Contact Section */}
+      <section className="py-16 px-4 bg-miggle-grayBlue/30">
+        <div className="container-inner max-w-4xl">
+          <h2 className="text-4xl md:text-5xl font-handwriting mb-12 text-center">Get in <span className="hand-drawn">Touch</span></h2>
+          
+          <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-8 md:p-12 shadow-md">
+            <p className="text-center text-lg mb-10">
+              Have questions about Miggle Light? Want to collaborate or just say hello? 
+              I'd love to hear from you!
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-miggle-peach/20 hover:bg-miggle-peach/30 transition-colors">
+                <Mail className="h-8 w-8 mb-4 text-miggle-peach" />
+                <h3 className="font-handwriting text-xl mb-2">Email</h3>
+                <a href="mailto:migsufrem@gmail.com" className="text-foreground hover:underline">
+                  migsufrem@gmail.com
+                </a>
+              </div>
+              
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-miggle-yellow/20 hover:bg-miggle-yellow/30 transition-colors">
+                <Discord className="h-8 w-8 mb-4 text-miggle-peach" />
+                <h3 className="font-handwriting text-xl mb-2">Discord</h3>
+                <p className="text-foreground">@stumbdev_</p>
+              </div>
+              
+              <div className="flex flex-col items-center text-center p-6 rounded-xl bg-miggle-green/20 hover:bg-miggle-green/30 transition-colors">
+                <Send className="h-8 w-8 mb-4 text-miggle-peach" />
+                <h3 className="font-handwriting text-xl mb-2">Telegram</h3>
+                <p className="text-foreground">@sufremoak</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
