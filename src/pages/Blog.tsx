@@ -1,39 +1,7 @@
 
 import React from 'react';
 import Navbar from '../components/Navbar';
-import BlogPostCard from '../components/BlogPostCard';
 import { toast } from '../components/ui/sonner';
-
-// Sample blog post data
-const blogPosts = [
-  {
-    id: 1,
-    title: "The Journey of Creating Miggle Light",
-    excerpt: "How a simple idea about combining analog joy with clever design turned into something special.",
-    date: "May 10, 2025",
-    image: "/placeholder.svg", 
-    category: "Behind the Scenes",
-    readTime: "4 min read"
-  },
-  {
-    id: 2,
-    title: "Why Analog Still Matters in a Digital World",
-    excerpt: "The psychological benefits of handwriting and how it improves memory, creativity, and focus.",
-    date: "May 5, 2025",
-    image: "/placeholder.svg",
-    category: "Analog Life",
-    readTime: "6 min read"
-  },
-  {
-    id: 3,
-    title: "Sustainable Materials in Miggle Light",
-    excerpt: "A deep dive into the eco-friendly materials that make up Miggle Light and why they were chosen.",
-    date: "April 28, 2025",
-    image: "/placeholder.svg",
-    category: "Sustainability",
-    readTime: "5 min read"
-  }
-];
 
 const Blog = () => {
   const handleSubscribe = (e: React.FormEvent) => {
@@ -81,44 +49,19 @@ const Blog = () => {
         </div>
       </section>
       
-      {/* Blog Posts Grid */}
+      {/* No Blog Posts Message */}
       <section className="py-16 px-4">
         <div className="container-inner">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {blogPosts.map(post => (
-              <BlogPostCard key={post.id} post={post} />
-            ))}
-          </div>
-          
-          {/* Coming Soon Message */}
-          <div className="mt-16 text-center">
-            <p className="text-lg font-handwriting">More stories coming soon...</p>
-            <div className="mt-4 flex justify-center">
-              <div className="w-16 h-1 bg-miggle-yellow rounded-full"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-      
-      {/* Featured Section */}
-      <section className="py-16 px-4 bg-white">
-        <div className="container-inner">
-          <h2 className="text-3xl md:text-4xl font-handwriting mb-12 text-center">Featured <span className="hand-drawn">Article</span></h2>
-          
-          <div className="flex flex-col md:flex-row gap-8 items-center">
-            <div className="md:w-1/2">
-              <div className="aspect-video rounded-2xl bg-miggle-peach/20 flex items-center justify-center overflow-hidden">
-                <img src="/placeholder.svg" alt="Featured Blog Post" className="object-cover w-full h-full" />
-              </div>
-            </div>
-            <div className="md:w-1/2">
-              <span className="text-sm font-medium bg-miggle-yellow/30 px-3 py-1 rounded-full">Design Process</span>
-              <h3 className="text-2xl md:text-3xl font-handwriting mt-3 mb-4">The Art of Crafting Each Miggle Light By Hand</h3>
-              <p className="text-muted-foreground mb-6">
-                From selecting sustainable materials to the final stitches, every Miggle Light is created with careful attention to detail and a focus on quality that can only come from handcrafting.
-              </p>
-              <a href="#" className="btn-primary inline-block">Read Article</a>
-            </div>
+          <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-12 text-center shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto mb-6 text-miggle-peach/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+            <h2 className="text-2xl md:text-3xl font-handwriting mb-4">Coming Soon</h2>
+            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+              I'm currently crafting some thoughtful articles about Miggle Light and analog creativity. 
+              Subscribe above to be notified when new content is published.
+            </p>
+            <div className="w-24 h-1 bg-miggle-yellow rounded-full mx-auto"></div>
           </div>
         </div>
       </section>
