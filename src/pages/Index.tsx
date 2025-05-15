@@ -181,8 +181,8 @@ const Index = () => {
               <p className="text-lg mb-6">Each Miggle Light is crafted by hand in my little workshop with attention to every detail. I take pride in making a product that will help in your creative.</p>
               
               <blockquote className="border-l-4 border-miggle-yellow pl-4 italic">
-                "We believe there's something special about objects made with care and intention. That's why every stitch, fold, and finish on your Miggle Light is done by human hands."
-                <footer className="text-right font-handwriting text-lg mt-2">— The Miggle Team</footer>
+                "I believe there's something special about objects made with care and intention. That's why every stitch, fold, and finish on your Miggle Light is done by my own hands."
+                <footer className="text-right font-handwriting text-lg mt-2">— The Creator</footer>
               </blockquote>
             </div>
           </div>
