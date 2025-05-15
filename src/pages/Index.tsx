@@ -1,19 +1,9 @@
-
 import React, { useState } from 'react';
 import { toast } from '../components/ui/sonner';
-import { 
-  NotebookIcon, 
-  StylusIcon, 
-  EcoIcon, 
-  MagnetIcon, 
-  GlowIcon, 
-  HeartHandsIcon 
-} from '../components/HandDrawnIcons';
+import { NotebookIcon, StylusIcon, EcoIcon, MagnetIcon, GlowIcon, HeartHandsIcon } from '../components/HandDrawnIcons';
 import Navbar from '../components/Navbar';
-
 const Index = () => {
   const [email, setEmail] = useState('');
-
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
@@ -23,9 +13,7 @@ const Index = () => {
     toast.success('Thank you for signing up! We\'ll notify you when Miggle Light launches.');
     setEmail('');
   };
-
-  return (
-    <div className="min-h-screen bg-miggle-beige text-foreground font-sans">
+  return <div className="min-h-screen bg-miggle-beige text-foreground font-sans">
       <Navbar />
       
       {/* Hero Section */}
@@ -51,8 +39,10 @@ const Index = () => {
                   <NotebookIcon className="w-40 h-40 opacity-50" />
                   <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-4 bg-miggle-yellow rounded-full animate-glow glow-effect"></div>
                 </div>
-                <div className="absolute -top-4 -right-4 w-20 h-20 bg-miggle-peach rounded-full flex items-center justify-center shadow-md animate-float" style={{ animationDelay: '1s' }}>
-                  <span className="font-handwriting text-lg">Coming<br/>Soon</span>
+                <div className="absolute -top-4 -right-4 w-20 h-20 bg-miggle-peach rounded-full flex items-center justify-center shadow-md animate-float" style={{
+                animationDelay: '1s'
+              }}>
+                  <span className="font-handwriting text-lg">Coming<br />Soon</span>
                 </div>
               </div>
             </div>
@@ -188,12 +178,8 @@ const Index = () => {
             </div>
             
             <div className="md:w-1/2">
-              <p className="text-lg mb-6">
-                Each Miggle Light is crafted by hand in our small workshop with attention to every detail. Our artisans take pride in creating a product that will become a cherished companion for your creative journey.
-              </p>
-              <p className="text-lg mb-6">
-                We source materials locally when possible and work with suppliers who share our commitment to sustainability and ethical production.
-              </p>
+              <p className="text-lg mb-6">Each Miggle Light is crafted by hand in my little workshop with attention to every detail. I take pride in making a product that will help in your creative.</p>
+              
               <blockquote className="border-l-4 border-miggle-yellow pl-4 italic">
                 "We believe there's something special about objects made with care and intention. That's why every stitch, fold, and finish on your Miggle Light is done by human hands."
                 <footer className="text-right font-handwriting text-lg mt-2">— The Miggle Team</footer>
@@ -213,18 +199,8 @@ const Index = () => {
           
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
             <div className="flex flex-col sm:flex-row gap-4">
-              <input
-                type="email"
-                placeholder="Your email address"
-                className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-              <button 
-                type="submit" 
-                className="btn-primary whitespace-nowrap"
-              >
+              <input type="email" placeholder="Your email address" className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none" value={email} onChange={e => setEmail(e.target.value)} required />
+              <button type="submit" className="btn-primary whitespace-nowrap">
                 Notify Me
               </button>
             </div>
@@ -274,8 +250,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
