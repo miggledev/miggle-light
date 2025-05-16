@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { Github } from 'lucide-react';
 
 const Navbar: React.FC = () => {
   return (
@@ -10,12 +11,21 @@ const Navbar: React.FC = () => {
           <span className="text-black">Miggle</span> 
           <span className="text-black opacity-70">Light</span>
         </Link>
-        <div className="hidden md:flex space-x-8">
+        <div className="hidden md:flex space-x-8 items-center">
           <a href="/#about" className="text-black hover:text-black/70 transition-colors">What is it?</a>
           <a href="/#features" className="text-black hover:text-black/70 transition-colors">Features</a>
           <a href="/#handcrafted" className="text-black hover:text-black/70 transition-colors">Handcrafted</a>
           <Link to="/blog" className="text-black hover:text-black/70 transition-colors">Blog</Link>
           <a href="/#signup" className="text-black hover:text-black/70 transition-colors">Coming Soon</a>
+          <a 
+            href="https://github.com/miggledev" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            className="flex items-center text-black hover:text-black/70 transition-colors"
+            aria-label="GitHub Profile"
+          >
+            <Github size={20} />
+          </a>
         </div>
         <button className="md:hidden">
           <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
