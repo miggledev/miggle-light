@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
@@ -31,6 +30,10 @@ const Blog = () => {
           </h1>
           <p className="text-lg md:text-xl text-center max-w-2xl mx-auto mb-8">
             Stories, thoughts, and updates about Miggle Light and the beautiful world of analog creativity
+          </p>
+          
+          <p className="text-center max-w-2xl mx-auto mb-8 bg-miggle-yellow/20 p-4 rounded-lg border border-miggle-yellow/30">
+            <span className="font-medium">Miggle Light is kind-of-opensource!</span> Follow our journey as we share insights, designs, and creative processes.
           </p>
           
           <div className="max-w-md mx-auto">
@@ -104,7 +107,7 @@ const Blog = () => {
       </section>
       
       {/* Footer (copied from Index page for consistency) */}
-      <footer className="py-8 px-4 bg-miggle-beige">
+      <section className="py-8 px-4 bg-miggle-beige">
         <div className="container-inner">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
@@ -118,7 +121,7 @@ const Blog = () => {
             </div>
           </div>
         </div>
-      </footer>
+      </section>
     </div>
   );
 };
