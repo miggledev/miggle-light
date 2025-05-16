@@ -1,10 +1,10 @@
-
 import React, { useState } from 'react';
 import { toast } from '../components/ui/sonner';
 import { NotebookIcon, StylusIcon, EcoIcon, MagnetIcon, GlowIcon, HeartHandsIcon } from '../components/HandDrawnIcons';
 import Navbar from '../components/Navbar';
-import { createClient } from '@supabase/supabase-js';
+import { supabase } from '../integrations/supabase/client';
 import SignupError from '../components/SignupError';
+import { useAuth } from '../contexts/AuthContext';
 
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
@@ -24,6 +24,7 @@ const Index = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [error, setError] = useState('');
+  const { user } = useAuth();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,11 +32,6 @@ const Index = () => {
     
     if (!email || !email.includes('@')) {
       toast.error('Please enter a valid email address');
-      return;
-    }
-
-    if (!supabase) {
-      setError('Our waitlist system is currently unavailable. Please try again later.');
       return;
     }
 
@@ -51,9 +47,9 @@ const Index = () => {
 
       toast.success('Thank you for signing up! We\'ll notify you when Miggle Light launches.');
       setEmail('');
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error submitting email:', error);
-      setError('There was a problem adding you to our waitlist. Please try again.');
+      setError(error.message || 'There was a problem adding you to our waitlist. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -243,27 +239,34 @@ const Index = () => {
             Miggle Light is currently in the final stages of development.<br />Be the first to know when it's ready to illuminate your analog world.
           </p>
           
-          <form onSubmit={handleSubmit} className="max-w-md mx-auto">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
-                className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none" 
-                value={email} 
-                onChange={e => setEmail(e.target.value)} 
-                required 
-                disabled={isSubmitting}
-              />
-              <button 
-                type="submit" 
-                className="btn-primary whitespace-nowrap"
-                disabled={isSubmitting}
-              >
-                {isSubmitting ? 'Submitting...' : 'Notify Me'}
-              </button>
+          {user ? (
+            <div className="text-center p-6 bg-white bg-opacity-70 rounded-xl max-w-md mx-auto">
+              <h3 className="text-2xl font-handwriting mb-3">Thank You!</h3>
+              <p>You're logged in as {user.email}.<br />We'll keep you updated on all Miggle Light news.</p>
             </div>
-            <p className="text-sm text-center mt-4 text-muted-foreground">I respect your privacy. No spam, ever.</p>
-          </form>
+          ) : (
+            <form onSubmit={handleSubmit} className="max-w-md mx-auto">
+              <div className="flex flex-col sm:flex-row gap-4">
+                <input 
+                  type="email" 
+                  placeholder="Your email address" 
+                  className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none" 
+                  value={email} 
+                  onChange={e => setEmail(e.target.value)} 
+                  required 
+                  disabled={isSubmitting}
+                />
+                <button 
+                  type="submit" 
+                  className="btn-primary whitespace-nowrap"
+                  disabled={isSubmitting}
+                >
+                  {isSubmitting ? 'Submitting...' : 'Notify Me'}
+                </button>
+              </div>
+              <p className="text-sm text-center mt-4 text-muted-foreground">I respect your privacy. No spam, ever.</p>
+            </form>
+          )}
 
           {error && <SignupError message={error} />}
           
