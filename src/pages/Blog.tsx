@@ -2,7 +2,7 @@
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
-import { Mail, Discord, Send } from 'lucide-react';
+import { Mail, MessageCircle, Send } from 'lucide-react';
 
 const Blog = () => {
   const handleSubscribe = (e: React.FormEvent) => {
@@ -88,7 +88,7 @@ const Blog = () => {
               </div>
               
               <div className="flex flex-col items-center text-center p-6 rounded-xl bg-miggle-yellow/20 hover:bg-miggle-yellow/30 transition-colors">
-                <Discord className="h-8 w-8 mb-4 text-miggle-peach" />
+                <MessageCircle className="h-8 w-8 mb-4 text-miggle-peach" />
                 <h3 className="font-handwriting text-xl mb-2">Discord</h3>
                 <p className="text-foreground">@stumbdev_</p>
               </div>
