@@ -2,17 +2,44 @@ import React, { useState } from 'react';
 import { toast } from '../components/ui/sonner';
 import { NotebookIcon, StylusIcon, EcoIcon, MagnetIcon, GlowIcon, HeartHandsIcon } from '../components/HandDrawnIcons';
 import Navbar from '../components/Navbar';
+import { createClient } from '@supabase/supabase-js';
+
+// Initialize Supabase client
+const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
 const Index = () => {
   const [email, setEmail] = useState('');
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email || !email.includes('@')) {
       toast.error('Please enter a valid email address');
       return;
     }
-    toast.success('Thank you for signing up! We\'ll notify you when Miggle Light launches.');
-    setEmail('');
+
+    setIsSubmitting(true);
+
+    try {
+      // Store the email in the Supabase 'waitlist' table
+      const { error } = await supabase
+        .from('waitlist')
+        .insert([{ email, signed_up_at: new Date() }]);
+
+      if (error) throw error;
+
+      toast.success('Thank you for signing up! We\'ll notify you when Miggle Light launches.');
+      setEmail('');
+    } catch (error) {
+      console.error('Error submitting email:', error);
+      toast.error('There was a problem adding you to our waitlist. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
+
   return <div className="min-h-screen bg-miggle-beige text-foreground font-sans">
       <Navbar />
       
@@ -199,9 +226,21 @@ const Index = () => {
           
           <form onSubmit={handleSubmit} className="max-w-md mx-auto">
             <div className="flex flex-col sm:flex-row gap-4">
-              <input type="email" placeholder="Your email address" className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none" value={email} onChange={e => setEmail(e.target.value)} required />
-              <button type="submit" className="btn-primary whitespace-nowrap">
-                Notify Me
+              <input 
+                type="email" 
+                placeholder="Your email address" 
+                className="flex-1 px-6 py-3 rounded-full bg-white bg-opacity-70 backdrop-blur-sm focus:outline-none focus:ring-2 focus:ring-miggle-peach border-none" 
+                value={email} 
+                onChange={e => setEmail(e.target.value)} 
+                required 
+                disabled={isSubmitting}
+              />
+              <button 
+                type="submit" 
+                className="btn-primary whitespace-nowrap"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? 'Submitting...' : 'Notify Me'}
               </button>
             </div>
             <p className="text-sm text-center mt-4 text-muted-foreground">I respect your privacy. No spam, ever.</p>
