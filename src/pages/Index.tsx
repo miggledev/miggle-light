@@ -1,22 +1,41 @@
+
 import React, { useState } from 'react';
 import { toast } from '../components/ui/sonner';
 import { NotebookIcon, StylusIcon, EcoIcon, MagnetIcon, GlowIcon, HeartHandsIcon } from '../components/HandDrawnIcons';
 import Navbar from '../components/Navbar';
 import { createClient } from '@supabase/supabase-js';
+import SignupError from '../components/SignupError';
 
 // Initialize Supabase client
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-const supabase = createClient(supabaseUrl, supabaseAnonKey);
+
+// Create client only if both URL and key are available
+let supabase;
+try {
+  if (!supabaseUrl) throw new Error('Supabase URL is missing');
+  if (!supabaseAnonKey) throw new Error('Supabase Anonymous Key is missing');
+  supabase = createClient(supabaseUrl, supabaseAnonKey);
+} catch (error) {
+  console.error('Failed to initialize Supabase client:', error);
+}
 
 const Index = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState('');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setError(''); // Reset error state
+    
     if (!email || !email.includes('@')) {
       toast.error('Please enter a valid email address');
+      return;
+    }
+
+    if (!supabase) {
+      setError('Our waitlist system is currently unavailable. Please try again later.');
       return;
     }
 
@@ -24,17 +43,17 @@ const Index = () => {
 
     try {
       // Store the email in the Supabase 'waitlist' table
-      const { error } = await supabase
+      const { error: supabaseError } = await supabase
         .from('waitlist')
         .insert([{ email, signed_up_at: new Date() }]);
 
-      if (error) throw error;
+      if (supabaseError) throw supabaseError;
 
       toast.success('Thank you for signing up! We\'ll notify you when Miggle Light launches.');
       setEmail('');
     } catch (error) {
       console.error('Error submitting email:', error);
-      toast.error('There was a problem adding you to our waitlist. Please try again.');
+      setError('There was a problem adding you to our waitlist. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -245,6 +264,8 @@ const Index = () => {
             </div>
             <p className="text-sm text-center mt-4 text-muted-foreground">I respect your privacy. No spam, ever.</p>
           </form>
+
+          {error && <SignupError message={error} />}
           
           <div className="mt-16 text-center">
             <p className="font-handwriting text-2xl mb-4">Share the analog love</p>
