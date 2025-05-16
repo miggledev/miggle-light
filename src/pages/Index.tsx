@@ -238,7 +238,7 @@ const Index = () => {
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
               <span className="font-handwriting text-2xl">Miggle Light</span>
-              <p className="text-sm text-muted-foreground">© 2025 Miggle Light. All rights reserved.</p>
+              <p className="text-sm text-muted-foreground">© 2025 Miggle from Miguel. All rights reserved.</p>
             </div>
             <div className="flex space-x-6">
               <a href="#" className="text-sm text-muted-foreground hover:text-black transition-colors">Privacy</a>
