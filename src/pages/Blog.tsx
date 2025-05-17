@@ -1,7 +1,90 @@
+
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
-import { Mail, MessageCircle, Send } from 'lucide-react';
+import { Mail, MessageCircle, Send, Calendar, Clock, Share, Link } from 'lucide-react';
+import BlogPostCard from '../components/BlogPostCard';
+
+// Sample blog posts data
+const blogPosts = [
+  {
+    id: 1,
+    title: 'The First Concept Prototype, the Miggle Light',
+    excerpt: 'Join us on the journey of creating our first physical concept prototype of the Miggle Light, an analog smart notebook case.',
+    date: 'May 15, 2025',
+    image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1287&auto=format&fit=crop',
+    category: 'Behind the Scenes',
+    readTime: '4 min read'
+  },
+  {
+    id: 2,
+    title: 'The Materials That Make Miggle Light Unique',
+    excerpt: 'A deep dive into our material choices and why sustainable, eco-friendly options are at the heart of our design philosophy.',
+    date: 'May 10, 2025',
+    image: 'https://images.unsplash.com/photo-1621600411688-4be93c2c1208?q=80&w=1470&auto=format&fit=crop',
+    category: 'Design',
+    readTime: '3 min read'
+  },
+  {
+    id: 3,
+    title: 'Why We're Embracing the Analog Renaissance',
+    excerpt: 'In a world dominated by screens, we explore why analog tools are making a powerful comeback and how they benefit creativity.',
+    date: 'May 5, 2025',
+    image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=80&w=1470&auto=format&fit=crop',
+    category: 'Philosophy',
+    readTime: '5 min read'
+  }
+];
+
+// Full blog post content (for the first blog post)
+const firstBlogPost = {
+  title: 'The First Concept Prototype, the Miggle Light',
+  date: 'May 15, 2025',
+  author: 'Mig Sufrem',
+  category: 'Behind the Scenes',
+  readTime: '4 min read',
+  image: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1287&auto=format&fit=crop',
+  content: `
+    <p class="text-lg mb-4">Creating something truly unique requires a blend of inspiration, experimentation, and a willingness to embrace the unexpected. Today, I'm excited to share with you the journey of creating the first physical prototype of the Miggle Light.</p>
+    
+    <p class="mb-4">It all started with a simple question: How can we bring the tactile joy of analog notebooks into a modern context without compromising what makes them special in the first place?</p>
+    
+    <h2 class="text-2xl font-handwriting my-6">The Concept Phase</h2>
+    
+    <p class="mb-4">The earliest sketches of Miggle Light weren't even called by that name. They were rough drawings in my own notebook, ironically enough – ideas about how to enhance the notebook experience without introducing screens, batteries, or anything that would take away from the pure analog experience.</p>
+    
+    <p class="mb-4">I wanted something that would give structure and protection to notebooks, but also add functionality in clever, non-digital ways. The designs evolved from simple covers to more intricate cases with built-in bookmarks, pen holders, and even the earliest concept of what would become our signature magnetic page markers.</p>
+    
+    <h2 class="text-2xl font-handwriting my-6">Materials Matter</h2>
+    
+    <p class="mb-4">Finding the right materials was one of the biggest challenges. I knew from the beginning that sustainability wasn't optional – it was fundamental to what Miggle Light would represent. The prototype went through several iterations of environmentally friendly materials:</p>
+    
+    <ul class="list-disc pl-5 mb-4 space-y-2">
+      <li>Cork – Beautiful and renewable, but not quite durable enough for daily use</li>
+      <li>Recycled felt – Offered great protection but didn't have the premium feel we wanted</li>
+      <li>Organic cotton canvas – Getting closer, but still missing something</li>
+      <li>Our final blend – A proprietary mix of recycled and natural materials that offers both durability and a tactile warmth</li>
+    </ul>
+    
+    <h2 class="text-2xl font-handwriting my-6">The First Working Prototype</h2>
+    
+    <p class="mb-4">After dozens of paper mock-ups and material tests, the first working prototype of Miggle Light came together in my small workshop. It wasn't pretty – held together with more hope than glue in some places – but it worked! The magnetic closure had a satisfying snap, the pages stayed perfectly flat when opened, and the built-in bookmark system worked even better than expected.</p>
+    
+    <p class="mb-4">What I remember most vividly is the moment I inserted my favorite notebook into the case for the first time. There was something almost magical about how it transformed an ordinary notebook into something special, intentional, and delightful to use.</p>
+    
+    <h2 class="text-2xl font-handwriting my-6">Unexpected Discoveries</h2>
+    
+    <p class="mb-4">As with any prototype, there were surprises along the way. Some features I thought would be essential turned out to be unnecessary. Others that started as afterthoughts became central to the design. The angle of the spine, the texture of the materials, the way light played across the surface – all of these elements evolved through hands-on experimentation.</p>
+    
+    <p class="mb-4">Perhaps the most unexpected discovery was how people responded to the prototype. When I shared it with friends and early testers, they didn't focus on the features I had labored over. Instead, they talked about how it made them feel. "It makes me want to write more," one said. Another mentioned that it "feels like an invitation to slow down and be present." These reactions helped shape the direction of subsequent iterations.</p>
+    
+    <h2 class="text-2xl font-handwriting my-6">Looking Forward</h2>
+    
+    <p class="mb-4">That first prototype is still on my desk, a humble reminder of where Miggle Light began. It's miles away from what the final product will be, but its soul – its essence – remains intact. As we move forward with refinements and prepare for production, I'm committed to preserving that special quality that made people connect with it from the beginning.</p>
+    
+    <p class="mb-4">In the coming weeks, I'll be sharing more details about specific features, our manufacturing process, and how you can be among the first to experience Miggle Light for yourself. Until then, I'd love to hear your thoughts about analog tools and what makes them special to you.</p>
+  `
+};
 
 const Blog = () => {
   const handleSubscribe = (e: React.FormEvent) => {
@@ -16,6 +99,24 @@ const Blog = () => {
     
     toast.success('Thank you for subscribing to our blog!');
     (e.target as HTMLFormElement).reset();
+  };
+
+  // State to control whether we show full blog post or blog listing
+  const [showFullPost, setShowFullPost] = React.useState(true);
+  const [currentPost, setCurrentPost] = React.useState(firstBlogPost);
+
+  // Function to handle clicking on a blog post
+  const handlePostClick = (postId: number) => {
+    // In a real app, you'd fetch the post data here
+    setCurrentPost(firstBlogPost); // For now, always show the first blog post
+    setShowFullPost(true);
+    window.scrollTo(0, 0);
+  };
+
+  // Function to go back to the blog listing
+  const handleBackToBlog = () => {
+    setShowFullPost(false);
+    window.scrollTo(0, 0);
   };
 
   return (
@@ -53,22 +154,99 @@ const Blog = () => {
         </div>
       </section>
       
-      {/* No Blog Posts Message */}
-      <section className="py-16 px-4">
-        <div className="container-inner">
-          <div className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl p-12 text-center shadow-md">
-            <svg xmlns="http://www.w3.org/2000/svg" className="h-16 w-16 mx-auto mb-6 text-miggle-peach/50" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
-            </svg>
-            <h2 className="text-2xl md:text-3xl font-handwriting mb-4">Coming Soon</h2>
-            <p className="text-muted-foreground mb-8 max-w-md mx-auto">
-              I'm currently crafting some thoughtful articles about Miggle Light and analog creativity. 
-              Subscribe above to be notified when new content is published.
-            </p>
-            <div className="w-24 h-1 bg-miggle-yellow rounded-full mx-auto"></div>
+      {showFullPost ? (
+        /* Full Blog Post */
+        <section className="py-16 px-4">
+          <div className="container-inner max-w-4xl">
+            <button 
+              onClick={handleBackToBlog} 
+              className="mb-8 flex items-center text-miggle-peach hover:text-miggle-peach/80 transition-colors"
+            >
+              ← Back to all posts
+            </button>
+            
+            <article className="bg-white bg-opacity-80 backdrop-blur-sm rounded-2xl overflow-hidden shadow-md">
+              <div className="aspect-video w-full overflow-hidden">
+                <img 
+                  src={currentPost.image} 
+                  alt={currentPost.title} 
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              
+              <div className="p-8 md:p-12">
+                <div className="flex flex-wrap gap-3 mb-4">
+                  <span className="text-xs font-medium bg-miggle-yellow/30 px-3 py-1 rounded-full">
+                    {currentPost.category}
+                  </span>
+                  <span className="text-xs font-medium bg-miggle-green/30 px-3 py-1 rounded-full flex items-center">
+                    <Clock className="h-3 w-3 mr-1" />
+                    {currentPost.readTime}
+                  </span>
+                </div>
+                
+                <h1 className="text-3xl md:text-4xl font-handwriting mb-4">
+                  {currentPost.title}
+                </h1>
+                
+                <div className="flex items-center justify-between mb-8 pb-8 border-b border-miggle-peach/10">
+                  <div className="flex items-center">
+                    <div className="w-10 h-10 rounded-full bg-miggle-peach/30 flex items-center justify-center text-sm font-medium">
+                      MS
+                    </div>
+                    <div className="ml-3">
+                      <div className="text-sm font-medium">{currentPost.author}</div>
+                      <div className="text-xs text-muted-foreground flex items-center">
+                        <Calendar className="h-3 w-3 mr-1" />{currentPost.date}
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="flex gap-2">
+                    <button className="p-2 rounded-full hover:bg-miggle-yellow/20 transition-colors" title="Share">
+                      <Share className="h-4 w-4 text-miggle-peach" />
+                    </button>
+                    <button className="p-2 rounded-full hover:bg-miggle-yellow/20 transition-colors" title="Copy link">
+                      <Link className="h-4 w-4 text-miggle-peach" />
+                    </button>
+                  </div>
+                </div>
+                
+                <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: currentPost.content }} />
+                
+                <div className="mt-12 pt-8 border-t border-miggle-peach/10">
+                  <h3 className="text-xl font-handwriting mb-4">Share this post</h3>
+                  <div className="flex gap-3">
+                    <button className="px-4 py-2 rounded-md bg-miggle-yellow/20 hover:bg-miggle-yellow/30 transition-colors flex items-center">
+                      <Share className="h-4 w-4 mr-2" />
+                      Share
+                    </button>
+                    <button className="px-4 py-2 rounded-md bg-miggle-yellow/20 hover:bg-miggle-yellow/30 transition-colors flex items-center">
+                      <Link className="h-4 w-4 mr-2" />
+                      Copy Link
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        /* Blog Posts Listing */
+        <section className="py-16 px-4">
+          <div className="container-inner">
+            <h2 className="text-3xl font-handwriting mb-8">Latest Posts</h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {blogPosts.map(post => (
+                <div key={post.id} onClick={() => handlePostClick(post.id)} className="cursor-pointer">
+                  <BlogPostCard post={post} />
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
       
       {/* Contact Section */}
       <section className="py-16 px-4 bg-miggle-grayBlue/30">
