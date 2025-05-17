@@ -59,10 +59,7 @@ const firstBlogPost = {
     <p class="mb-4">Finding the right materials was one of the biggest challenges. I knew from the beginning that sustainability wasn't optional – it was fundamental to what Miggle Light would represent. The prototype went through several iterations of environmentally friendly materials:</p>
     
     <ul class="list-disc pl-5 mb-4 space-y-2">
-      <li>Cork – Beautiful and renewable, but not quite durable enough for daily use</li>
-      <li>Recycled felt – Offered great protection but didn't have the premium feel we wanted</li>
-      <li>Organic cotton canvas – Getting closer, but still missing something</li>
-      <li>Our final blend – A proprietary mix of recycled and natural materials that offers both durability and a tactile warmth</li>
+      <li>i just used some sort of cardboard.</li>
     </ul>
     
     <h2 class="text-2xl font-handwriting my-6">The First Working Prototype</h2>
