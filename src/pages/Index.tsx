@@ -11,11 +11,11 @@ const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 // Create client only if both URL and key are available
-let supabase;
+let supabaseClient;
 try {
   if (!supabaseUrl) throw new Error('Supabase URL is missing');
   if (!supabaseAnonKey) throw new Error('Supabase Anonymous Key is missing');
-  supabase = createClient(supabaseUrl, supabaseAnonKey);
+  supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
 } catch (error) {
   console.error('Failed to initialize Supabase client:', error);
 }
