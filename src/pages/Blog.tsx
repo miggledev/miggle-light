@@ -1,6 +1,5 @@
 
 import React from 'react';
-import { Helmet } from 'react-helmet';
 import Navbar from '../components/Navbar';
 import BlogPostCard from '../components/BlogPostCard';
 import PictureFrame from '../components/PictureFrame';
@@ -37,13 +36,22 @@ const blogPosts = [
 ];
 
 const Blog = () => {
+  // Set the page title and meta description using standard document API
+  React.useEffect(() => {
+    document.title = "Miggle Light Blog - Ideas, Updates, and Inspiration";
+    const metaDescription = document.querySelector('meta[name="description"]');
+    if (metaDescription) {
+      metaDescription.setAttribute('content', "Explore articles about analog living, sustainable design, and updates about Miggle Light's development journey.");
+    } else {
+      const meta = document.createElement('meta');
+      meta.name = 'description';
+      meta.content = "Explore articles about analog living, sustainable design, and updates about Miggle Light's development journey.";
+      document.head.appendChild(meta);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen bg-miggle-beige">
-      <Helmet>
-        <title>Miggle Light Blog - Ideas, Updates, and Inspiration</title>
-        <meta name="description" content="Explore articles about analog living, sustainable design, and updates about Miggle Light's development journey." />
-      </Helmet>
-      
       <Navbar />
       
       <div className="pt-32 pb-16 px-4">
