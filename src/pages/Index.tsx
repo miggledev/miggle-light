@@ -6,20 +6,7 @@ import { supabase } from '../integrations/supabase/client';
 import SignupError from '../components/SignupError';
 import { useAuth } from '../contexts/AuthContext';
 
-// Initialize Supabase client
-const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
-
-// Create client only if both URL and key are available
-let supabaseClient;
-try {
-  if (!supabaseUrl) throw new Error('Supabase URL is missing');
-  if (!supabaseAnonKey) throw new Error('Supabase Anonymous Key is missing');
-  supabaseClient = createClient(supabaseUrl, supabaseAnonKey);
-} catch (error) {
-  console.error('Failed to initialize Supabase client:', error);
-}
-
+// Remove the duplicate supabase client initialization
 const Index = () => {
   const [email, setEmail] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -39,9 +26,13 @@ const Index = () => {
 
     try {
       // Store the email in the Supabase 'waitlist' table
+      // Fix: Convert Date to string and pass the object directly, not as an array
       const { error: supabaseError } = await supabase
         .from('waitlist')
-        .insert([{ email, signed_up_at: new Date() }]);
+        .insert({ 
+          email, 
+          signed_up_at: new Date().toISOString() 
+        });
 
       if (supabaseError) throw supabaseError;
 
@@ -313,4 +304,5 @@ const Index = () => {
       </footer>
     </div>;
 };
+
 export default Index;
