@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { supabase } from '../integrations/supabase/client';
 import SignupError from '../components/SignupError';
 import { useAuth } from '../contexts/AuthContext';
+import PictureFrame from '../components/PictureFrame';
 
 // Remove the duplicate supabase client initialization
 const Index = () => {
@@ -222,6 +223,26 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Prototype Display Section */}
+      <section className="section-container bg-white">
+        <div className="container-inner max-w-4xl">
+          <h2 className="text-4xl md:text-5xl font-handwriting mb-12 text-center">The <span className="hand-drawn">Prototype</span></h2>
+          <div className="mx-auto">
+            <PictureFrame 
+              imageUrl="/lovable-uploads/aac03905-1301-4f12-9c86-91ef5353e226.png"
+              altText="Miggle Light Prototype Notebook"
+              caption="An early prototype of the Miggle Light notebook with pen holder"
+            />
+          </div>
+          <div className="mt-12 text-center max-w-2xl mx-auto">
+            <p className="text-lg">
+              This early prototype shows the essential elements that make Miggle Light special - 
+              simplicity, functionality, and an analog experience designed with care.
+            </p>
+          </div>
+        </div>
+      </section>
+      
       {/* Sign Up Section */}
       <section id="signup" className="section-container bg-gradient-to-br from-miggle-peach/50 to-miggle-yellow/50">
         <div className="container-inner max-w-4xl">
