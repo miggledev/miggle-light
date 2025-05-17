@@ -10,7 +10,7 @@ const blogPosts = [
   {
     id: 1,
     title: 'The Return to Analog: Why Paper Still Matters',
-    excerpt: 'In a world dominated by digital screens, there's a growing appreciation for the tactile experience of writing on paper. This post explores the cognitive and emotional benefits of analog note-taking.',
+    excerpt: "In a world dominated by digital screens, there's a growing appreciation for the tactile experience of writing on paper. This post explores the cognitive and emotional benefits of analog note-taking.",
     date: 'May 12, 2025',
     image: 'https://images.unsplash.com/photo-1455390582262-044cdead277a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG5vdGVib29rfGVufDB8fDB8fHww&auto=format&fit=crop&w=800&q=60',
     category: 'Analog Living',
@@ -19,7 +19,7 @@ const blogPosts = [
   {
     id: 2,
     title: 'Sustainable Materials in Everyday Products',
-    excerpt: 'How conscious choices in materials can reduce our environmental impact without sacrificing quality or aesthetics. Featuring Miggle Light's approach to sustainable design.',
+    excerpt: "How conscious choices in materials can reduce our environmental impact without sacrificing quality or aesthetics. Featuring Miggle Light's approach to sustainable design.",
     date: 'April 29, 2025',
     image: 'https://images.unsplash.com/photo-1600857544200-b2f666a9a2ec?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c3VzdGFpbmFibGV8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=800&q=60',
     category: 'Sustainability',
