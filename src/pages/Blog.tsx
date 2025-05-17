@@ -3,6 +3,7 @@ import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
 import { Mail, MessageCircle, Send, Calendar, Clock, Share, Link } from 'lucide-react';
 import BlogPostCard from '../components/BlogPostCard';
+import PictureFrame from '../components/PictureFrame';
 
 // Sample blog posts data
 const blogPosts = [
@@ -79,7 +80,8 @@ const firstBlogPost = {
     <p class="mb-4">That first prototype is still on my desk, a humble reminder of where Miggle Light began. It's miles away from what the final product will be, but its soul – its essence – remains intact. As we move forward with refinements and prepare for production, I'm committed to preserving that special quality that made people connect with it from the beginning.</p>
     
     <p class="mb-4">In the coming weeks, I'll be sharing more details about specific features, our manufacturing process, and how you can be among the first to experience Miggle Light for yourself. Until then, I'd love to hear your thoughts about analog tools and what makes them special to you.</p>
-  `
+  `,
+  imagePrototype: 'https://images.unsplash.com/photo-1544816155-12df9643f363?q=80&w=1287&auto=format&fit=crop'
 };
 
 const Blog = () => {
@@ -209,6 +211,16 @@ const Blog = () => {
                 </div>
                 
                 <div className="prose prose-lg max-w-none" dangerouslySetInnerHTML={{ __html: currentPost.content }} />
+                
+                {/* Picture Frame for Prototype */}
+                <div className="mt-16 pt-8 border-t border-miggle-peach/10">
+                  <h3 className="text-xl font-handwriting mb-6 text-center">The First Prototype</h3>
+                  <PictureFrame 
+                    imageUrl={currentPost.imagePrototype}
+                    altText="The First Miggle Light Prototype"
+                    caption="Our first physical prototype of the Miggle Light notebook case."
+                  />
+                </div>
                 
                 <div className="mt-12 pt-8 border-t border-miggle-peach/10">
                   <h3 className="text-xl font-handwriting mb-4">Share this post</h3>
