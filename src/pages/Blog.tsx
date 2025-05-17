@@ -1,4 +1,3 @@
-
 import React from 'react';
 import Navbar from '../components/Navbar';
 import { toast } from '../components/ui/sonner';
@@ -27,7 +26,7 @@ const blogPosts = [
   },
   {
     id: 3,
-    title: 'Why We're Embracing the Analog Renaissance',
+    title: 'Why We\'re Embracing the Analog Renaissance',
     excerpt: 'In a world dominated by screens, we explore why analog tools are making a powerful comeback and how they benefit creativity.',
     date: 'May 5, 2025',
     image: 'https://images.unsplash.com/photo-1456324504439-367cee3b3c32?q=80&w=1470&auto=format&fit=crop',
