@@ -1,2 +1,15 @@
 @import url(https://miggledev.github.io/src/styles.css);
 
+a.button {
+      background: #a67c52;
+            color: #fff;
+            padding: 0.7em 1.5em;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 1px 4px rgba(166,124,82,0.08);
+            transition: background 0.2s;
+}
+        a.button:hover {
+            background: #7c5c36;
+        }
