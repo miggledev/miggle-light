@@ -1,27 +1,59 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Miggle Light - Eco-friendly Smart Notebook Case</title>
-    <meta name="description" content="Miggle Light - A handmade, eco-friendly smart notebook case designed for analog lovers. Made to be recycled, crafted with care, and has a cozy feel." />
-    <meta name="author" content="Miggle Light" />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Miggle Light</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-white text-gray-900 font-inter">
+  <header class="flex justify-between items-center p-6 border-b">
+    <h1 class="text-2xl font-bold">Miggle Light <span class="ml-2 px-2 py-0.5 text-xs bg-yellow-200 text-yellow-900 rounded">Coming Soon</span></h1>
+    <select class="border rounded px-2 py-1 text-sm" aria-label="Location Switcher">
+      <option value="us">🇺🇸 United States</option>
+      <option value="br">🇧🇷 Brazil</option>
+    </select>
+  </header>
 
-    <meta property="og:title" content="Miggle Light - Who said digital notebook?" />
-    <meta property="og:description" content="A handmade, eco-friendly smart notebook case designed for analog lovers." />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+  <main class="px-6 py-12 max-w-4xl mx-auto space-y-16">
+    <!-- Hero Section -->
+    <section class="text-center space-y-6">
+      <img src="https://raw.githubusercontent.com/miggledev/media/main/miggle-light-banner.jpg" alt="Miggle Light Banner" class="rounded-xl mx-auto w-full max-w-3xl">
+      <h2 class="text-4xl font-bold">Smart Simplicity</h2>
+      <p class="text-lg text-gray-600">Miggle Light is launching soon — a smart notebook case for thinkers, dreamers, and doers. Lightweight, stylish, and functional — without any electronics.</p>
+      <div class="mt-6">
+        <input type="email" placeholder="Enter your email" class="px-4 py-2 border rounded-l shadow-sm w-64" />
+        <button class="px-4 py-2 bg-gray-900 text-white rounded-r">Notify Me</button>
+      </div>
+    </section>
 
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@lovable_dev" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
-  </head>
-
-  <body>
-    <div id="root"></div>
-    <!-- IMPORTANT: DO NOT REMOVE THIS SCRIPT TAG OR THIS VERY COMMENT! -->
-    <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <!-- Features -->
+    <section class="grid md:grid-cols-2 gap-12">
+      <div class="space-y-2">
+        <img src="https://raw.githubusercontent.com/miggledev/media/main/magnetic-design.jpg" alt="Magnetic Design" class="rounded shadow">
+        <h3 class="text-xl font-semibold">📎 Magnetic Design</h3>
+        <p>Four powerful magnets keep everything perfectly aligned. Easily snap accessories or close the case without hassle.</p>
+      </div>
+      <div class="space-y-2">
+        <img src="https://raw.githubusercontent.com/miggledev/media/main/miggle-stylus.jpg" alt="Miggle Stylus" class="rounded shadow">
+        <h3 class="text-xl font-semibold">✍️ Miggle Stylus</h3>
+        <p>Our signature stylus is always within reach. It clips into the spine magnetically and feels like a natural pen.</p>
+      </div>
+      <div class="space-y-2">
+        <img src="https://raw.githubusercontent.com/miggledev/media/main/eco-friendly.jpg" alt="Eco-Friendly" class="rounded shadow">
+        <h3 class="text-xl font-semibold">♻️ Eco-Friendly</h3>
+        <p>Miggle Light is fully recyclable, designed with the environment in mind from the inside out.</p>
+      </div>
+    </section>
+    <section>
+        <div class="bg-navy text-gray-900 font-bold mx-auto items-center">
+            <p>Check out <a href="./webmiggle">webmiggle</a></p>
+        </div>
+    </section>
+  </main>
+  <footer class="text-center py-6 text-sm text-gray-400">
+    &copy; 2025 Miggle. All rights reserved.
+  </footer>
+</body>
 </html>
