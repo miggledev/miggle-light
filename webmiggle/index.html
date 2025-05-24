@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>WebMiggle – Companion for Miggle Light</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background: #f6f3ee; /* soft paper background */
+            margin: 0;
+            padding: 0;
+            color: #3e2c18;
+        }
+        header {
+            background: #e9e4da; /* warm paper header */
+            color: #7c5c36;
+            padding: 2rem 1rem 1.5rem 1rem;
+            text-align: center;
+            border-bottom: 2px solid #e4d6c3;
+        }
+        header img {
+            width: 64px;
+            margin-bottom: 1rem;
+        }
+        h1 {
+            margin: 0 0 0.5rem 0;
+            font-size: 2.5rem;
+            letter-spacing: 1px;
+            font-family: 'Georgia', serif;
+        }
+        h2 {
+            color: #a67c52;
+            margin-top: 2rem;
+            font-family: 'Georgia', serif;
+        }
+        main {
+            max-width: 700px;
+            margin: 2rem auto;
+            background: #fdfaf6; /* off-white, paper-like */
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(166,124,82,0.07);
+            padding: 2rem;
+            border: 1.5px solid #e4d6c3;
+        }
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .feature {
+            flex: 1 1 220px;
+            background: #f8f3ee;
+            border-radius: 8px;
+            padding: 1rem;
+            text-align: center;
+            border: 1px solid #e4d6c3;
+            box-shadow: 0 1px 4px rgba(166,124,82,0.04);
+        }
+        h3 {
+            color: #a67c52;
+            font-family: 'Georgia', serif;
+        }
+        p, li {
+            color: #6d4c2e;
+        }
+        ol {
+            background: #f8f3ee;
+            border-radius: 8px;
+            padding: 1.2em 1.5em;
+            color: #6d4c2e;
+            border: 1px solid #e4d6c3;
+        }
+        a.button {
+            background: #a67c52;
+            color: #fff;
+            padding: 0.7em 1.5em;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            box-shadow: 0 1px 4px rgba(166,124,82,0.08);
+            transition: background 0.2s;
+        }
+        a.button:hover {
+            background: #7c5c36;
+        }
+        footer {
+            text-align: center;
+            color: #bfae9e;
+            font-size: 0.95rem;
+            margin: 2rem 0 1rem 0;
+        }
+        @media (max-width: 600px) {
+            main { padding: 1rem; }
+            .features { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="../src/assets/logo.png" alt="Miggle Light Logo">
+        <h1>WebMiggle</h1>
+        <p>The web companion for <strong>Miggle Light</strong> – your analog, distraction-free notebook case & notepad</p>
+        <p style="font-size:1.1em;color:#a67c52;margin-top:0.5em;background:#f8f3ee;padding:0.7em 1.2em;border-radius:8px;display:inline-block;border:1px solid #e4d6c3;"><em>WebMiggle is in early development.</em></p>
+    </header>
+    <main>
+        <h2>What is WebMiggle?</h2>
+        <p style="font-size:1.13em;line-height:1.7;">
+            WebMiggle is your digital companion for the Miggle Light smart notebook. Miggle Light is a purely analog device—no screens, no batteries, no cloud, and no distractions. Enjoy the simplicity of pen and paper, enhanced with thoughtful organization on the web.
+        </p>
+        <div class="features">
+            <div class="feature">
+                <h3>Stay Focused</h3>
+                <p>No screens, no notifications, just pure writing. Miggle Light keeps you in the moment.</p>
+            </div>
+            <div class="feature">
+                <h3>Organize</h3>
+                <p>Use WebMiggle to tag, search, and organize your handwritten notes after you digitize them.</p>
+            </div>
+            <div class="feature">
+                <h3>Analog Simplicity</h3>
+                <p>No batteries, no charging, no cloud—just your ideas, on paper, at your pace.</p>
+            </div>
+        </div>
+        <h2>Get Started</h2>
+        <ol>
+            <li>Write your notes in Miggle Light.</li>
+            <li>Digitize your notes using your preferred method (scan or photo).</li>
+            <li>Upload and organize them with WebMiggle.</li>
+        </ol>
+        <p>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSeRES_xZPM1Y4e1srAx9rdUKhB7fC3Kf3u5yg9t0cih025Fyw/viewform?usp=dialog" class="button">Subscribe for the beta</a>
+        </p>
+    </main>
+    <footer>
+        &copy; 2024 Miggle. All rights reserved.
+    </footer>
+</body>
+</html>

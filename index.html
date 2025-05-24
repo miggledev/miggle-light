@@ -8,6 +8,11 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-white text-gray-900 font-inter">
+  <!-- Blue Banner -->
+  <div class="w-full bg-blue-600 text-white text-center py-2 text-sm font-semibold">
+    Check out <a href="">webmiggle</a><span class="ml-2 px-2 py-0.5 text-xs bg-green-400 text-yellow-900 rounded">New</span>
+  </div>
+
   <header class="flex justify-between items-center p-6 border-b">
     <h1 class="text-2xl font-bold">Miggle Light <span class="ml-2 px-2 py-0.5 text-xs bg-yellow-200 text-yellow-900 rounded">Coming Soon</span></h1>
     <select class="border rounded px-2 py-1 text-sm" aria-label="Location Switcher">
@@ -19,40 +24,47 @@
   <main class="px-6 py-12 max-w-4xl mx-auto space-y-16">
     <!-- Hero Section -->
     <section class="text-center space-y-6">
-      <img src="https://raw.githubusercontent.com/miggledev/media/main/miggle-light-banner.jpg" alt="Miggle Light Banner" class="rounded-xl mx-auto w-full max-w-3xl">
+      <img src="./src/assets/light.jpg" alt="Miggle Light Banner" class="rounded-xl mx-auto w-300 max-w-3xl" width="300" height="300">
       <h2 class="text-4xl font-bold">Smart Simplicity</h2>
-      <p class="text-lg text-gray-600">Miggle Light is launching soon — a smart notebook case for thinkers, dreamers, and doers. Lightweight, stylish, and functional — without any electronics.</p>
+      <p class="text-lg text-gray-600">Miggle Light is launching soon — a smart notebook case & notepad for thinkers, dreamers, and doers. Lightweight, stylish, and functional — without any electronics.</p>
       <div class="mt-6">
-        <input type="email" placeholder="Enter your email" class="px-4 py-2 border rounded-l shadow-sm w-64" />
-        <button class="px-4 py-2 bg-gray-900 text-white rounded-r">Notify Me</button>
+        <button class="bg-yellow-200" onclick="buyNow()">Buy now!</button> <-- click
+        <script>
+          function buyNow() {
+            window.location.href = "https://https://docs.google.com/forms/d/e/1FAIpQLSeRES_xZPM1Y4e1srAx9rdUKhB7fC3Kf3u5yg9t0cih025Fyw/viewform?usp=dialog";
+          }
+          </script>
       </div>
     </section>
 
     <!-- Features -->
     <section class="grid md:grid-cols-2 gap-12">
       <div class="space-y-2">
-        <img src="https://raw.githubusercontent.com/miggledev/media/main/magnetic-design.jpg" alt="Magnetic Design" class="rounded shadow">
+        <img src="./src/assets/manetic.jpg" alt="Magnetic Design" class="rounded shadow">
         <h3 class="text-xl font-semibold">📎 Magnetic Design</h3>
         <p>Four powerful magnets keep everything perfectly aligned. Easily snap accessories or close the case without hassle.</p>
       </div>
       <div class="space-y-2">
-        <img src="https://raw.githubusercontent.com/miggledev/media/main/miggle-stylus.jpg" alt="Miggle Stylus" class="rounded shadow">
+        <img src="./src/assets/stylus.jpg" alt="Miggle Stylus" class="rounded shadow">
         <h3 class="text-xl font-semibold">✍️ Miggle Stylus</h3>
-        <p>Our signature stylus is always within reach. It clips into the spine magnetically and feels like a natural pen.</p>
+        <p>Our signature stylus is always within reach. And feels like a natural pen.</p>
       </div>
       <div class="space-y-2">
-        <img src="https://raw.githubusercontent.com/miggledev/media/main/eco-friendly.jpg" alt="Eco-Friendly" class="rounded shadow">
+        <img src="./src/assets/./eco].jpg" alt="Eco-Friendly" class="rounded shadow">
         <h3 class="text-xl font-semibold">♻️ Eco-Friendly</h3>
         <p>Miggle Light is fully recyclable, designed with the environment in mind from the inside out.</p>
       </div>
-    </section>
-    <section>
-        <div class="bg-navy text-gray-900 font-bold mx-auto items-center">
-            <p>Check out <a href="./webmiggle">webmiggle</a></p>
-        </div>
+      <div class="space-y-2">
+        <img src="./src/assets/compact.jpg" alt="Compact Size" class="rounded shadow">
+        <h3 class="text-xl font-semibold">📏 Compact Size</h3>
+        <p>Fits perfectly in your bag, ready to go wherever you do. Lightweight and portable.</p>
+      </div>
     </section>
   </main>
   <footer class="text-center py-6 text-sm text-gray-400">
+    <div>
+      <!--social icons (awesome font), telegram & github-->
+    </div>
     &copy; 2025 Miggle. All rights reserved.
   </footer>
 </body>
